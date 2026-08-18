@@ -20,8 +20,6 @@ Install it:
   Use the maintainer-approved gstack distribution and verification steps.
   Install it into one of the supported global skill locations so it provides
   a bin directory, then restart your AI coding tool.
-
-Then restart your AI coding tool.
 MSG
   echo '{"hookSpecificOutput":{"hookEventName":"PreToolUse","permissionDecision":"deny","permissionDecisionReason":"gstack is required but not installed. See stderr for install instructions."}}'
   exit 2
