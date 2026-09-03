@@ -1,0 +1,20 @@
+# Fasihi CRM — production stack on the 1GB VPS
+# Build the app image on a strong machine, then load it on the VPS (no on-box build).
+
+services:
+  fasihi-app:
+    image: fasihi-crm:local
+    container_name: fasihi-app
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3000:3000"
+    environment:
+      NODE_ENV: production
+      PORT: "3000"
+      # Browser calls same-origin /api/data (Caddy routes it to fasihi-api)
+    mem_limit: 384m
+
+  # Existing containers on the VPS (reference only — do not recreate blindly):
+  # fasihi-caddy  :80/:443
+  # fasihi-api    :127.0.0.1:8080  (Postgres client)
+  # fasihi-db     :127.0.0.1:5432
