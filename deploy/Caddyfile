@@ -1,0 +1,25 @@
+# Caddy for www.fasihicrm.ir — self-hosted app on :3000 + existing API/data.
+# Do not put secrets here. TLS via Cloudflare or Caddy internal.
+
+{
+	email admin@fasihicrm.ir
+}
+
+www.fasihicrm.ir, fasihicrm.ir {
+	encode gzip zstd
+
+	# Live Postgres-backed API (fasihi-api container / host service)
+	handle /api/* {
+		reverse_proxy 127.0.0.1:8080
+	}
+
+	# Lightweight HTML data browser already served by API stack
+	handle /data* {
+		reverse_proxy 127.0.0.1:8080
+	}
+
+	# Self-hosted Fasihi CRM UI (Docker image published to :3000)
+	handle {
+		reverse_proxy 127.0.0.1:3000
+	}
+}
