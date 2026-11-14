@@ -2,15 +2,15 @@
 
 Product Owner: Amirhossein Ramezani. Persian RTL insurance CRM for Karafarin Agency **3045** (Fatemeh Fasihi).
 
-Live demo (Lovable): https://fasihi-crm.lovable.app  
-Production domain: https://www.fasihicrm.ir  
-Lovable project: `b03d0b17-2002-4c2d-a2ca-9ecb7d4b9b9c`  
-Latest known Lovable commit: `1f166b9f`  
+Live demo (Lovable): https://fasihi-crm.lovable.app
+Production domain: https://www.fasihicrm.ir
+Lovable project: `b03d0b17-2002-4c2d-a2ca-9ecb7d4b9b9c`
+Latest known Lovable commit: `1f166b9f`
 Agency brief: [AGENCY.md](./AGENCY.md)
 
 ## What this repo is
 
-Partial frontend export from Lovable (~80 files). **Not complete** vs original ~107.  
+Partial frontend export from Lovable (~80 files). **Not complete** vs original ~107.
 `vps/app.py` = Python API on VPS. `vps/Caddyfile` may be stale vs live `/opt/fasihi/Caddyfile`.
 
 ## What is live on VPS (FACT 2026-09-11)

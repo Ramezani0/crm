@@ -1,6 +1,6 @@
 # پرامپت کامل — کپی برای Grok Bot
 
-ریپو: https://github.com/Ramezani0/fasihi-crm  
+ریپو: https://github.com/Ramezani0/fasihi-crm
 شروع از برنچ/PR: https://github.com/Ramezani0/fasihi-crm/pull/11 (`docs/grok-bot-handoff-20260911`)
 
 متن زیر را عیناً به Grok Bot بده.
@@ -29,7 +29,7 @@
 11. src/routes/index.tsx  (ورود)
 12. src/routes/dashboard.tsx
 13. src/components/app-shell.tsx
-14. src/components/emblem/* 
+14. src/components/emblem/*
 15. src/components/ui/button.tsx
 
 معیار تصویر (حتماً ببین):

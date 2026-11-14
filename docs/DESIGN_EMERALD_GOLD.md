@@ -11,7 +11,7 @@ PO این را قفل کرد: سایت باید شبیه کنسول نمایند
 | داشبورد تیره | [design-preview/dashboard-dark.png](./design-preview/dashboard-dark.png) |
 | داشبورد روشن | [design-preview/dashboard-light.png](./design-preview/dashboard-light.png) |
 
-لوگو: [`/public/brand/karafarin-logo.png`](../public/brand/karafarin-logo.png)  
+لوگو: [`/public/brand/karafarin-logo.png`](../public/brand/karafarin-logo.png)
 فاوآیکون پیشنهادی: [`/public/favicon-karafarin.svg`](../public/favicon-karafarin.svg)
 
 ## رنگ
@@ -26,7 +26,7 @@ PO این را قفل کرد: سایت باید شبیه کنسول نمایند
 | طلای لوگو | `#FCBC00` | `#FCBC00` |
 | muted | `#C6B27A` | `#6D5B28` |
 
-عنوان‌ها، اعداد KPI، نام برند: طلایی.  
+عنوان‌ها، اعداد KPI، نام برند: طلایی.
 متن بدنه طلایی مطلق نباشد — خوانایی اولویت دارد.
 
 ## تم
@@ -39,12 +39,12 @@ PO این را قفل کرد: سایت باید شبیه کنسول نمایند
 سایدبار، هدر موبایل، کارت ورود، هیرو داشبورد، فاوآیکون، فوتر، واترمارک خیلی کم‌رنگ روی بوم اصلی.
 
 ## ۳D
-فقط login و dashboard hero.  
-نشان رسمی به‌صورت الماس سه‌بعدی / صفحه بافت‌دار؛ اگر WebGL یا `prefers-reduced-motion` نبود → همان PNG/SVG.  
+فقط login و dashboard hero.
+نشان رسمی به‌صورت الماس سه‌بعدی / صفحه بافت‌دار؛ اگر WebGL یا `prefers-reduced-motion` نبود → همان PNG/SVG.
 بقیه صفحات عمق CSS دارند، نه Three.js.
 
 ## دکمه
-هاور: سایه طلایی نرم.  
+هاور: سایه طلایی نرم.
 کلیک: flash کوتاه طلا / زمرد / جنگلی (بدون افکت اگر reduced-motion).
 
 ## قفل اجرا

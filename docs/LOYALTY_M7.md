@@ -52,7 +52,7 @@ Store در حافظه + SQL اختیاری. بدون wipe به customers/policie
 
 ## دیتابیس
 `vps/migrations/008_loyalty_m7.sql` — جداول:
-`loyalty_point_ledger`, `loyalty_coupons`, `loyalty_campaigns`, `loyalty_agent_scores`  
+`loyalty_point_ledger`, `loyalty_coupons`, `loyalty_campaigns`, `loyalty_agent_scores`
 (ایدمپوتنت؛ Jalali TEXT؛ بدون دست‌زدن به CRM)
 
 ## فرانت
@@ -92,5 +92,5 @@ curl -sS -X POST http://127.0.0.1:8088/api/loyalty/festival/score \
 - Drop-in: `/workspace/shared/fasihi-loyalty-m7.py` + `LOYALTY_M7_MERGE.md`
 
 ## محدودیت‌ها
-Excel HOLD · UI shell/theme HOLD · بدون secret · بدون wipe · Web tar HOLD  
+Excel HOLD · UI shell/theme HOLD · بدون secret · بدون wipe · Web tar HOLD
 M1–M6 حفظ — شاخه از `feat/dms-m6` (88e093d).

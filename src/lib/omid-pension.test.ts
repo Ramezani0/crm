@@ -62,4 +62,3 @@ describe("Teamsho deep-link URL", () => {
     expect(getTeamshoUrl().startsWith("https://teamsho.karafarin-insurance.ir")).toBe(true);
   });
 });
-

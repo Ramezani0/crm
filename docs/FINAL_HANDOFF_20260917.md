@@ -1,8 +1,8 @@
 # Fasihi CRM — Final Handoff / بستهٔ نهایی تحویل
 
-**تاریخ:** 2026-09-17 (Asia/Tehran)  
-**ریپو:** https://github.com/Ramezani0/fasihi-crm  
-**اساس:** `origin/main` @ `1b96439`  
+**تاریخ:** 2026-09-17 (Asia/Tehran)
+**ریپو:** https://github.com/Ramezani0/fasihi-crm
+**اساس:** `origin/main` @ `1b96439`
 **قوانین:** بدون secret / token / password — فقط نام envها و FACTهای تأییدشده.
 
 ---
@@ -107,4 +107,3 @@
 - هیچ secret، token، یا password در این سند یا commit نیست.
 - مقادیر env فقط روی VPS / secret store؛ اینجا فقط **نام** متغیرها.
 - Import live و Kara write تا GO صریح CoS قفل‌اند.
-

@@ -1,7 +1,7 @@
 # Fasihi CRM — ChatGPT / Grok Bot Handoff Brief
-**آخرین به‌روزرسانی:** 2026-09-11 (Asia/Tehran) — بعد از import فاز ۱–۷ + معیار هویت زمرد/طلا  
-**ریپو:** https://github.com/Ramezani0/fasihi-crm  
-**Product Owner:** امیرحسین رمضانی — نمایندگی بیمه کارآفرین **۳۰۴۵** (فاطمه فصیحی)  
+**آخرین به‌روزرسانی:** 2026-09-11 (Asia/Tehran) — بعد از import فاز ۱–۷ + معیار هویت زمرد/طلا
+**ریپو:** https://github.com/Ramezani0/fasihi-crm
+**Product Owner:** امیرحسین رمضانی — نمایندگی بیمه کارآفرین **۳۰۴۵** (فاطمه فصیحی)
 **لایو:** https://www.fasihicrm.ir · VPS `185.204.197.49`
 
 > راز، پسورد، و CSV خام مشتری داخل گیت نیست. این سند + کلون ریپو کافی است برای ادامه.
@@ -36,8 +36,8 @@
 ## محصول / استک / اولویت
 CRM فارسی RTL: مشتریان، بیمه‌نامه‌ها، اقساط، پایپلاین، داشبورد تمدید، import اکسل، **پرونده ۳۶۵** (نمای کامل پرونده).
 
-استک: TanStack Start + React 19 + Tailwind 4 + Bun · Postgres · Docker + Caddy  
-اولویت: حفظ داده > پایداری > صحت > سرعت > UX  
+استک: TanStack Start + React 19 + Tailwind 4 + Bun · Postgres · Docker + Caddy
+اولویت: حفظ داده > پایداری > صحت > سرعت > UX
 ۳D فقط login + dashboard hero
 
 نقش دمو: ceo/manager/sales/accounting — چیپ فقط username؛ هر رمز غیرخالی OK
@@ -56,7 +56,7 @@ PO خواست زیباترین سایت بیمه‌ای با تم سه‌بعد�
 | لوگو | `public/brand/karafarin-logo.png` |
 | پیش‌نمایش معیار | `docs/design-preview/` |
 
-جزئیات اجرا: [DESIGN_EMERALD_GOLD.md](./DESIGN_EMERALD_GOLD.md)  
+جزئیات اجرا: [DESIGN_EMERALD_GOLD.md](./DESIGN_EMERALD_GOLD.md)
 پرامپت کپی Grok Bot: [GROK_BOT_PROMPT.md](./GROK_BOT_PROMPT.md)
 
 افکت دکمه هنوز در cloud agent است — PRهای [\#9](https://github.com/Ramezani0/fasihi-crm/pull/9) و [\#10](https://github.com/Ramezani0/fasihi-crm/pull/10)؛ بعد از merge دیپلوی.

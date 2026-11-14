@@ -536,4 +536,3 @@ export function searchCrmDossierHits(
   }
   return hits;
 }
-

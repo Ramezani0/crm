@@ -46,7 +46,7 @@ Store در حافظه + SQL اختیاری. بدون wipe به customers/policie
 
 ## دیتابیس
 `vps/migrations/007_dms_m6.sql` — جداول:
-`archive_locations`, `documents`, `signatures`, `ocr_jobs`, `document_hashes`  
+`archive_locations`, `documents`, `signatures`, `ocr_jobs`, `document_hashes`
 (ایدمپوتنت؛ Jalali TEXT؛ `case_365` JSONB؛ بدون دست‌زدن به CRM)
 
 ## فرانت
@@ -93,5 +93,5 @@ curl -sS -X POST http://127.0.0.1:8088/api/dms/ocr \
 - DevOps: bind-mount volume؛ بدون wipe
 
 ## محدودیت‌ها
-Excel HOLD · UI shell/theme HOLD · بدون secret · بدون wipe · بدون بیومتریک واقعی · بدون ML · Web tar HOLD  
+Excel HOLD · UI shell/theme HOLD · بدون secret · بدون wipe · بدون بیومتریک واقعی · بدون ML · Web tar HOLD
 M1 (`sales-network`) · M2 (`sima-zar`) · M3 (`omid-pension`) · M4 (`group-health`) · M5 (`sanhab`) حفظ — شاخه از `feat/sanhab-m5` (f9bce2b).

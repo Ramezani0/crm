@@ -8,12 +8,12 @@ Offers table columns: شرکت · تعرفه · پایه · تخفیف · توا
 
 ## Endpoints (VPS `app.py`)
 - `GET /api/premium-compare/status` — `{ configured, portalUrl, loginBase, apiBase }` (no secrets)
-- `POST /api/premium-compare/quote` — body: `{ line, nationalId, financialCover, year, usage, vehicleType, plate }`  
+- `POST /api/premium-compare/quote` — body: `{ line, nationalId, financialCover, year, usage, vehicleType, plate }`
   Returns **all** offers (never truncate). Persian errors for Sanhab fail / empty. `503` if env missing.
 
 ## Env (names only)
-`BIMEBAZAR_URL`, `BIMEBAZAR_USER`, `BIMEBAZAR_PASS`  
-Optional: `BIMEBAZAR_LOGIN_BASE` (default `https://shoraka.net`), `BIMEBAZAR_API_BASE` (default `https://iframe.shoraka.net`)  
+`BIMEBAZAR_URL`, `BIMEBAZAR_USER`, `BIMEBAZAR_PASS`
+Optional: `BIMEBAZAR_LOGIN_BASE` (default `https://shoraka.net`), `BIMEBAZAR_API_BASE` (default `https://iframe.shoraka.net`)
 Browser: `VITE_PREMIUM_COMPARE_SOURCE=mock|live`
 
 Secrets live in `/home/box/.secrets/bimebazar.env` — never commit.

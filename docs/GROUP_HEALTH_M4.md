@@ -25,8 +25,8 @@ ClaimPayout = min((ApprovedTariff − BasicInsurerShare) × (1 − DeductibleRat
 - Research: `insurance-crm-modules-gemini-20260924.txt` (~3666–3673, 4720–4731)
 
 ### `product_code` نه `insurance_type`
-Enum قفل‌شدهٔ Import (§2 handoff) شامل `group_health` **نیست**.  
-این ماژول از **`product_code = group_health`** روی جداول اختصاصی استفاده می‌کند و `policies.insurance_type` را آلوده نمی‌کند تا Import map به‌روز شود.  
+Enum قفل‌شدهٔ Import (§2 handoff) شامل `group_health` **نیست**.
+این ماژول از **`product_code = group_health`** روی جداول اختصاصی استفاده می‌کند و `policies.insurance_type` را آلوده نمی‌کند تا Import map به‌روز شود.
 `insurance_type` روی قراردادهای ماژول **nullable** است (Eng-extension pending Import).
 
 ### شکل ورود آینده (وقتی اکسل بیاید)
@@ -54,7 +54,7 @@ Store در حافظه + SQL اختیاری. بدون تماس wipe به customer
 ## دیتابیس
 `vps/migrations/005_group_health_m4.sql` — جداول:
 `gh_contracts`, `gh_members`, `gh_benefit_ceilings`, `gh_referrals`, `gh_claims`,
-`gh_tariff_stub`, `gh_personnel_amendments`, `gh_waiting_rules`  
+`gh_tariff_stub`, `gh_personnel_amendments`, `gh_waiting_rules`
 (ایدمپوتنت؛ `product_code=group_health`؛ Jalali TEXT؛ `case_365` JSONB)
 
 ## فرانت
@@ -90,5 +90,5 @@ curl -sS 'http://127.0.0.1:8088/api/group-health/waiting?memberId=3&benefit=surg
 - Drop-in: `/workspace/shared/fasihi-group-health-m4.py` + `GROUP_HEALTH_M4_MERGE.md`
 
 ## محدودیت‌ها
-Excel HOLD · UI shell/theme HOLD · بدون secret · بدون wipe · Web tar HOLD  
+Excel HOLD · UI shell/theme HOLD · بدون secret · بدون wipe · Web tar HOLD
 M1 (`sales-network`) · M2 (`sima-zar`) · M3 (`omid-pension`) حفظ — این شاخه از `feat/omid-pension-m3` ساخته شده است.

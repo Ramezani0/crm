@@ -87,5 +87,5 @@ curl -sS -X POST http://127.0.0.1:8088/api/omid-pension/death \
 - Drop-in: `/workspace/shared/fasihi-omid-pension-m3.py` + `OMID_PENSION_M3_MERGE.md`
 
 ## محدودیت‌ها
-Excel HOLD · UI shell/theme HOLD · بدون secret · بدون wipe · Web tar HOLD  
+Excel HOLD · UI shell/theme HOLD · بدون secret · بدون wipe · Web tar HOLD
 M1 (`sales-network`) و M2 (`sima-zar`) حفظ شده‌اند — این شاخه روی `feat/sima-zar-m2` ساخته شده است.

@@ -43,7 +43,7 @@ Store در حافظه + SQL اختیاری. بدون wipe به customers/policie
 ## دیتابیس
 `vps/migrations/006_sanhab_m5.sql` — جداول:
 `sanhab_industry_ceiling_config`, `sanhab_inquiries`, `sanhab_unique_codes`,
-`sanhab_export_queue`, `sanhab_export_batches`  
+`sanhab_export_queue`, `sanhab_export_batches`
 (ایدمپوتنت؛ Jalali TEXT؛ `case_365` JSONB؛ بدون دست‌زدن به CRM)
 
 ## فرانت
@@ -88,5 +88,5 @@ curl -sS -X POST http://127.0.0.1:8088/api/sanhab/export/run -H 'Content-Type: a
 - Drop-in: `/workspace/shared/fasihi-sanhab-m5.py` + `SANHAB_M5_MERGE.md`
 
 ## محدودیت‌ها
-Excel HOLD · UI shell/theme HOLD · بدون secret · بدون wipe · بدون شبکه سنهاب · Web tar HOLD  
+Excel HOLD · UI shell/theme HOLD · بدون secret · بدون wipe · بدون شبکه سنهاب · Web tar HOLD
 M1 (`sales-network`) · M2 (`sima-zar`) · M3 (`omid-pension`) · M4 (`group-health`) حفظ — شاخه از `feat/group-health-m4` (ae6b870).

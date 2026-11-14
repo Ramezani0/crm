@@ -33,12 +33,12 @@ Excel **HOLD** تا `WIPE_GO` · بدون wipe.
 | POST | `/api/branch-ops/variances` `{agentCode, agencyAmount, branchAmount, note?}` |
 | GET/POST | `/api/branch-ops/checks` |
 
-`kind`: `receipt` \| `policy_sheet` \| `hologram`  
+`kind`: `receipt` \| `policy_sheet` \| `hologram`
 Store در حافظه + SQL اختیاری. بدون wipe به customers/policies/installments/M1–M7.
 
 ## دیتابیس
 `vps/migrations/009_branch_ops_m8.sql` — جداول:
-`paper_stock`, `paper_movements`, `commission_variances`, `incoming_checks`  
+`paper_stock`, `paper_movements`, `commission_variances`, `incoming_checks`
 (ایدمپوتنت؛ Jalali TEXT؛ بدون دست‌زدن به CRM)
 
 ## فرانت
@@ -81,5 +81,5 @@ curl -sS -X POST http://127.0.0.1:8088/api/branch-ops/checks \
 - Drop-in: `/workspace/shared/fasihi-branch-ops-m8.py` + `BRANCH_OPS_M8_MERGE.md`
 
 ## محدودیت‌ها
-Excel HOLD · UI shell/theme HOLD · بدون secret · بدون wipe · Web tar HOLD  
+Excel HOLD · UI shell/theme HOLD · بدون secret · بدون wipe · Web tar HOLD
 M1–M7 حفظ — شاخه از `feat/loyalty-m7` (6f22afc).

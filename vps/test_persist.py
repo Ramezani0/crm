@@ -98,7 +98,7 @@ class FakeCursor:
             self._result = None
             return
 
-        
+
         if "FROM POLICIES" in upper and "UPDATE" not in upper:
             pid = str(params[0])
             for pol in self.store.policies:

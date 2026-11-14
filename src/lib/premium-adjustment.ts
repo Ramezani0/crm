@@ -250,4 +250,3 @@ export function resolveLadderP0(policy?: {
     latestPremium: latest,
   };
 }
-
