@@ -8,3 +8,43 @@ dist/
 !.env.example
 *.tar.gz
 .DS_Store
+
+# Local credentials and keys
+*.pass
+*.pem
+*.key
+id_rsa*
+db.env
+vps/sms-panel-secrets.json
+
+# Customer data, exports and runtime artifacts
+*.csv
+*.sqlite
+*.sqlite3
+*.db
+*.dump
+*.bak
+*.log
+*.jsonl
+*.tgz
+*.zip
+import-ready/
+import-ready-backup*/
+db-load/
+uploads/
+vps/sms-store.json*
+docs/import-20260911/
+docs/import-20260917/
+docs/design-preview/
+
+# SQL is allowed only for reviewed schema migrations
+*.sql
+!vps/migrations/
+!vps/migrations/*.sql
+
+# Generated files
+.vinxi/
+.tanstack/
+__pycache__/
+*.pyc
+Thumbs.db

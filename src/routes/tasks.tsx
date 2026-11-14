@@ -1,6 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { AppShell, SectionCard } from "@/components/app-shell";
+import { CustomerNameLink } from "@/components/customer-name-link";
 import { useStore } from "@/lib/store";
+import { LUX_ART } from "@/lib/brand";
+import { LuxOrnament } from "@/components/lux-still";
 import { formatDate, toFa } from "@/lib/format";
 import { Checkbox } from "@/components/ui/checkbox";
 import { EmptyState } from "@/components/states";
@@ -25,6 +28,9 @@ function TasksPage() {
 
   return (
     <AppShell title="وظایف و یادآوری‌ها" subtitle={`${toFa(open.length)} وظیفه باز`} permission="tasks.view">
+      <div className="relative overflow-hidden rounded-3xl">
+        <LuxOrnament src={LUX_ART.dashboard} className="opacity-[0.12]" />
+        <div className="relative z-[1] space-y-4">
       <SectionCard title="وظایف باز">
         {open.length === 0 ? (
           <EmptyState title="وظیفه بازی وجود ندارد" />
@@ -36,7 +42,12 @@ function TasksPage() {
                 <div className="min-w-0 flex-1">
                   <p className="font-medium">{t.title}</p>
                   <p className="text-[11px] text-muted-foreground">
-                    {name(t.relatedCustomerId)} — سررسید {formatDate(t.dueDate)} — {t.assignee}
+                    {name(t.relatedCustomerId) ? (
+                      <CustomerNameLink customerId={t.relatedCustomerId} name={name(t.relatedCustomerId)} />
+                    ) : (
+                      "—"
+                    )}{" "}
+                    — سررسید {formatDate(t.dueDate)} — {t.assignee}
                   </p>
                 </div>
                 <span className="rounded-full border border-border px-2 py-0.5 text-[11px]">{t.priority}</span>
@@ -48,14 +59,23 @@ function TasksPage() {
 
       <SectionCard title="انجام‌شده">
         <ul className="space-y-2">
-          {done.map((t) => (
+            {done.map((t) => (
             <li key={t.id} className="flex items-center gap-3 rounded-lg border border-border/40 px-3 py-2 text-sm text-muted-foreground">
               <Checkbox checked onCheckedChange={() => toggleTask(t.id)} aria-label={`بازگشایی ${t.title}`} />
-              <span className="line-through">{t.title}</span>
+              <div className="min-w-0 flex-1">
+                <span className="line-through">{t.title}</span>
+                {t.relatedCustomerId && (
+                  <p className="text-[11px]">
+                    <CustomerNameLink customerId={t.relatedCustomerId} name={name(t.relatedCustomerId)} />
+                  </p>
+                )}
+              </div>
             </li>
           ))}
         </ul>
       </SectionCard>
+        </div>
+      </div>
     </AppShell>
   );
 }

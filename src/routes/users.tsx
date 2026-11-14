@@ -23,7 +23,7 @@ function UsersPage() {
     <AppShell title="کاربران و نقش‌ها" permission="users.manage">
       <SectionCard title="کاربران سامانه">
         <div className="overflow-x-auto">
-          <table className="w-full min-w-[640px] text-sm">
+          <table className="w-full min-w-[640px] text-base">
             <thead>
               <tr className="border-b border-border text-xs text-muted-foreground">
                 <th className="p-2 text-start">نام</th>

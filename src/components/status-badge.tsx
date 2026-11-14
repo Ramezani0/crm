@@ -15,6 +15,7 @@ export const INSTALLMENT_LABEL: Record<InstallmentStatus, string> = {
   due: "در انتظار سررسید",
   overdue: "معوق",
   partial: "پرداخت جزئی",
+  history: "تاریخچه / HIST",
 };
 
 const INSTALLMENT_TONE: Record<InstallmentStatus, string> = {
@@ -22,6 +23,7 @@ const INSTALLMENT_TONE: Record<InstallmentStatus, string> = {
   due: "info",
   overdue: "danger",
   partial: "warning",
+  history: "muted",
 };
 
 export const POLICY_LABEL: Record<PolicyStatus, string> = {
@@ -50,38 +52,26 @@ const CUSTOMER_TONE: Record<CustomerStatus, string> = {
   lead: "info",
 };
 
-/** Prefer Persian source-file label when present. */
-function labelOf(statusLabel: string | undefined, fallback: string) {
-  const t = statusLabel?.trim();
-  return t && t.length ? t : fallback;
-}
-
-export function InstallmentBadge({
-  status,
-  statusLabel,
-}: {
-  status: InstallmentStatus;
-  statusLabel?: string;
-}) {
+export function InstallmentBadge({ status, label }: { status: InstallmentStatus; label?: string }) {
   return (
-    <span className={`${base} ${tone[INSTALLMENT_TONE[status] ?? "muted"]}`}>
-      {labelOf(statusLabel, INSTALLMENT_LABEL[status] ?? status)}
+    <span className={`${base} ${tone[INSTALLMENT_TONE[status]]}`}>
+      {(label ?? "").trim() || INSTALLMENT_LABEL[status]}
     </span>
   );
 }
 
-export function PolicyBadge({ status, statusLabel }: { status: PolicyStatus; statusLabel?: string }) {
+export function PolicyBadge({ status, label }: { status: PolicyStatus; label?: string }) {
   return (
-    <span className={`${base} ${tone[POLICY_TONE[status] ?? "muted"]}`}>
-      {labelOf(statusLabel, POLICY_LABEL[status] ?? status)}
+    <span className={`${base} ${tone[POLICY_TONE[status]]}`}>
+      {(label ?? "").trim() || POLICY_LABEL[status]}
     </span>
   );
 }
 
-export function CustomerBadge({ status, statusLabel }: { status: CustomerStatus; statusLabel?: string }) {
+export function CustomerBadge({ status, label }: { status: CustomerStatus; label?: string }) {
   return (
-    <span className={`${base} ${tone[CUSTOMER_TONE[status] ?? "muted"]}`}>
-      {labelOf(statusLabel, CUSTOMER_LABEL[status] ?? status)}
+    <span className={`${base} ${tone[CUSTOMER_TONE[status]]}`}>
+      {(label ?? "").trim() || CUSTOMER_LABEL[status]}
     </span>
   );
 }

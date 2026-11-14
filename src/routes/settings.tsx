@@ -5,6 +5,7 @@ import { ROLES } from "@/lib/types";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
+import { IranPayamakPanel } from "@/components/sms-settings-panel";
 
 export const Route = createFileRoute("/settings")({
   head: () => ({
@@ -28,11 +29,11 @@ function SettingsPage() {
         <div className="grid gap-3 sm:grid-cols-2">
           <div className="space-y-1">
             <Label htmlFor="agency">نام دفتر</Label>
-            <Input id="agency" defaultValue="دفتر بیمه فصیحی" />
+            <Input id="agency" defaultValue="نمایندگی بیمه کارآفرین — خانم فاطمه فصیحی" />
           </div>
           <div className="space-y-1">
             <Label htmlFor="code">کد نمایندگی</Label>
-            <Input id="code" defaultValue="۳۳۸۲۱" />
+            <Input id="code" defaultValue="۳۰۴۵" />
           </div>
           <div className="space-y-1">
             <Label htmlFor="tel">تلفن</Label>
@@ -46,17 +47,24 @@ function SettingsPage() {
       </SectionCard>
 
       <SectionCard title="یادآوری‌ها و اعلان‌ها">
-        {[
-          ["یادآوری پیامکی سررسید اقساط", true],
-          ["هشدار اقساط معوق بیش از ۷ روز", true],
-          ["یادآوری تمدید بیمه‌نامه (۳۰ روز قبل)", true],
-          ["گزارش هفتگی مدیریتی از طریق ایمیل", false],
-        ].map(([label, on]) => (
-          <div key={label as string} className="flex items-center justify-between border-b border-border/40 py-3 text-sm last:border-0">
-            <span>{label}</span>
-            <Switch defaultChecked={on as boolean} aria-label={label as string} />
-          </div>
-        ))}
+        <div className="flex items-center justify-between py-3 text-sm">
+          <span>گزارش هفتگی مدیریتی از طریق ایمیل</span>
+          <Switch defaultChecked={false} aria-label="گزارش هفتگی مدیریتی از طریق ایمیل" />
+        </div>
+      </SectionCard>
+
+      <SectionCard title="ایران پیامک" description="وضعیت env سرور — ارسال متن آزاد از داخل پرونده ۳۶۵">
+        <IranPayamakPanel />
+        <p className="mt-3 text-sm text-muted-foreground">
+          پنل کامل پیامک و تست اتصال:{" "}
+          <a className="font-medium text-emerald-700 underline-offset-4 hover:underline" href="/sms-panel">
+            /sms-panel
+          </a>
+          {" "}· کارهای ضروری:{" "}
+          <a className="font-medium text-emerald-700 underline-offset-4 hover:underline" href="/urgent-tasks">
+            /urgent-tasks
+          </a>
+        </p>
       </SectionCard>
     </AppShell>
   );

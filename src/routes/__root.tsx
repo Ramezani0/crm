@@ -12,23 +12,24 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { StoreProvider } from "../lib/store";
+import { BRAND, BRAND_ASSETS } from "../lib/brand";
+import { THEME_BOOT_SCRIPT } from "../lib/theme";
+import { ThemeProvider } from "../lib/theme-context";
 import { Toaster } from "../components/ui/sonner";
+import { Button } from "../components/ui/button";
 
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="glass max-w-md rounded-2xl p-10 text-center">
-        <h1 className="text-6xl font-bold text-primary">۴۰۴</h1>
+        <h1 className="text-6xl font-bold text-title">۴۰۴</h1>
         <h2 className="mt-4 text-xl font-semibold">صفحه پیدا نشد</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
+        <p className="mt-2 text-base text-muted-foreground">
           آدرس وارد شده در سامانه فصیحی وجود ندارد یا جابه‌جا شده است.
         </p>
-        <Link
-          to="/"
-          className="mt-6 inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:opacity-90"
-        >
-          بازگشت به ورود
-        </Link>
+        <Button asChild className="mt-6">
+          <Link to="/">بازگشت به ورود</Link>
+        </Button>
       </div>
     </div>
   );
@@ -45,22 +46,22 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
       <div className="glass max-w-md rounded-2xl p-10 text-center">
         <h1 className="text-xl font-semibold tracking-tight">این صفحه بارگذاری نشد</h1>
-        <p className="mt-2 text-sm text-muted-foreground">
+        <p className="mt-2 text-base text-muted-foreground">
           خطایی رخ داده است. می‌توانید دوباره تلاش کنید یا به صفحه اصلی بازگردید.
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
-          <button
+          <Button
+            type="button"
             onClick={() => {
               router.invalidate();
               reset();
             }}
-            className="rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground"
           >
             تلاش دوباره
-          </button>
-          <a href="/" className="rounded-md border border-input px-4 py-2 text-sm font-medium">
-            صفحه اصلی
-          </a>
+          </Button>
+          <Button asChild variant="outline">
+            <a href="/">صفحه اصلی</a>
+          </Button>
         </div>
       </div>
     </div>
@@ -72,10 +73,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "CRM فصیحی | سامانه مدیریت بیمه" },
-      { name: "description", content: "سامانه یکپارچه مدیریت مشتریان، بیمه‌نامه‌ها و اقساط دفتر بیمه فصیحی." },
-      { name: "author", content: "Fasihi CRM" },
+      { title: `${BRAND.title} | سامانه مدیریت بیمه` },
+      { name: "description", content: BRAND.subtitle },
+      { name: "author", content: BRAND.titleEn },
       { property: "og:type", content: "website" },
+      { property: "og:title", content: BRAND.title },
+      { property: "og:description", content: BRAND.subtitle },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
@@ -84,9 +87,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap",
       },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: BRAND_ASSETS.favicon, type: "image/svg+xml" },
+      { rel: "apple-touch-icon", href: BRAND_ASSETS.logoSm },
     ],
   }),
   shellComponent: RootShell,
@@ -97,8 +101,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="fa" dir="rtl" className="dark">
+    <html lang="fa" dir="rtl" suppressHydrationWarning>
       <head>
+        <script dangerouslySetInnerHTML={{ __html: THEME_BOOT_SCRIPT }} />
         <HeadContent />
       </head>
       <body>
@@ -114,11 +119,12 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <StoreProvider>
-        {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-        <Outlet />
-        <Toaster position="top-center" dir="rtl" />
-      </StoreProvider>
+      <ThemeProvider>
+        <StoreProvider>
+          <Outlet />
+          <Toaster position="top-center" dir="rtl" />
+        </StoreProvider>
+      </ThemeProvider>
     </QueryClientProvider>
   );
 }

@@ -10,23 +10,40 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as UsersRouteImport } from './routes/users'
+import { Route as UrgentTasksRouteImport } from './routes/urgent-tasks'
 import { Route as TasksRouteImport } from './routes/tasks'
+import { Route as SmsPanelRouteImport } from './routes/sms-panel'
+import { Route as SimaZarRouteImport } from './routes/sima-zar'
 import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as SanhabRouteImport } from './routes/sanhab'
+import { Route as SalesNetworkRouteImport } from './routes/sales-network'
 import { Route as ReportsRouteImport } from './routes/reports'
+import { Route as RenewalsRouteImport } from './routes/renewals'
+import { Route as PremiumCalcRouteImport } from './routes/premium-calc'
 import { Route as PoliciesRouteImport } from './routes/policies'
 import { Route as PipelineRouteImport } from './routes/pipeline'
+import { Route as OmidPensionRouteImport } from './routes/omid-pension'
 import { Route as NotificationsRouteImport } from './routes/notifications'
+import { Route as LoyaltyRouteImport } from './routes/loyalty'
 import { Route as InstallmentsRouteImport } from './routes/installments'
-import { Route as ImportRouteImport } from './routes/import'
+import { Route as GroupHealthRouteImport } from './routes/group-health'
+import { Route as DmsRouteImport } from './routes/dms'
 import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as CustomersRouteImport } from './routes/customers'
+import { Route as BranchOpsRouteImport } from './routes/branch-ops'
+import { Route as BimebazarRouteImport } from './routes/bimebazar'
 import { Route as AuditRouteImport } from './routes/audit'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as CustomersIndexRouteImport } from './routes/customers.index'
-import { Route as CustomersIdRouteImport } from './routes/customers.$id'
+import { Route as CustomersCustomerIdRouteImport } from './routes/customers.$customerId'
 
 const UsersRoute = UsersRouteImport.update({
   id: '/users',
   path: '/users',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UrgentTasksRoute = UrgentTasksRouteImport.update({
+  id: '/urgent-tasks',
+  path: '/urgent-tasks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TasksRoute = TasksRouteImport.update({
@@ -34,14 +51,44 @@ const TasksRoute = TasksRouteImport.update({
   path: '/tasks',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SmsPanelRoute = SmsPanelRouteImport.update({
+  id: '/sms-panel',
+  path: '/sms-panel',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SimaZarRoute = SimaZarRouteImport.update({
+  id: '/sima-zar',
+  path: '/sima-zar',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SettingsRoute = SettingsRouteImport.update({
   id: '/settings',
   path: '/settings',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SanhabRoute = SanhabRouteImport.update({
+  id: '/sanhab',
+  path: '/sanhab',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SalesNetworkRoute = SalesNetworkRouteImport.update({
+  id: '/sales-network',
+  path: '/sales-network',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ReportsRoute = ReportsRouteImport.update({
   id: '/reports',
   path: '/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RenewalsRoute = RenewalsRouteImport.update({
+  id: '/renewals',
+  path: '/renewals',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PremiumCalcRoute = PremiumCalcRouteImport.update({
+  id: '/premium-calc',
+  path: '/premium-calc',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PoliciesRoute = PoliciesRouteImport.update({
@@ -54,9 +101,19 @@ const PipelineRoute = PipelineRouteImport.update({
   path: '/pipeline',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OmidPensionRoute = OmidPensionRouteImport.update({
+  id: '/omid-pension',
+  path: '/omid-pension',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const NotificationsRoute = NotificationsRouteImport.update({
   id: '/notifications',
   path: '/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoyaltyRoute = LoyaltyRouteImport.update({
+  id: '/loyalty',
+  path: '/loyalty',
   getParentRoute: () => rootRouteImport,
 } as any)
 const InstallmentsRoute = InstallmentsRouteImport.update({
@@ -64,14 +121,34 @@ const InstallmentsRoute = InstallmentsRouteImport.update({
   path: '/installments',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ImportRoute = ImportRouteImport.update({
-  id: '/import',
-  path: '/import',
+const GroupHealthRoute = GroupHealthRouteImport.update({
+  id: '/group-health',
+  path: '/group-health',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DmsRoute = DmsRouteImport.update({
+  id: '/dms',
+  path: '/dms',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DashboardRoute = DashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CustomersRoute = CustomersRouteImport.update({
+  id: '/customers',
+  path: '/customers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BranchOpsRoute = BranchOpsRouteImport.update({
+  id: '/branch-ops',
+  path: '/branch-ops',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BimebazarRoute = BimebazarRouteImport.update({
+  id: '/bimebazar',
+  path: '/bimebazar',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuditRoute = AuditRouteImport.update({
@@ -84,132 +161,210 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CustomersIndexRoute = CustomersIndexRouteImport.update({
-  id: '/customers/',
-  path: '/customers/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CustomersIdRoute = CustomersIdRouteImport.update({
-  id: '/customers/$id',
-  path: '/customers/$id',
-  getParentRoute: () => rootRouteImport,
+const CustomersCustomerIdRoute = CustomersCustomerIdRouteImport.update({
+  id: '/$customerId',
+  path: '/$customerId',
+  getParentRoute: () => CustomersRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/audit': typeof AuditRoute
+  '/bimebazar': typeof BimebazarRoute
+  '/branch-ops': typeof BranchOpsRoute
+  '/customers': typeof CustomersRouteWithChildren
   '/dashboard': typeof DashboardRoute
-  '/import': typeof ImportRoute
+  '/dms': typeof DmsRoute
+  '/group-health': typeof GroupHealthRoute
   '/installments': typeof InstallmentsRoute
+  '/loyalty': typeof LoyaltyRoute
   '/notifications': typeof NotificationsRoute
+  '/omid-pension': typeof OmidPensionRoute
   '/pipeline': typeof PipelineRoute
   '/policies': typeof PoliciesRoute
+  '/premium-calc': typeof PremiumCalcRoute
+  '/renewals': typeof RenewalsRoute
   '/reports': typeof ReportsRoute
+  '/sales-network': typeof SalesNetworkRoute
+  '/sanhab': typeof SanhabRoute
   '/settings': typeof SettingsRoute
+  '/sima-zar': typeof SimaZarRoute
+  '/sms-panel': typeof SmsPanelRoute
   '/tasks': typeof TasksRoute
+  '/urgent-tasks': typeof UrgentTasksRoute
   '/users': typeof UsersRoute
-  '/customers/$id': typeof CustomersIdRoute
-  '/customers/': typeof CustomersIndexRoute
+  '/customers/$customerId': typeof CustomersCustomerIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/audit': typeof AuditRoute
+  '/bimebazar': typeof BimebazarRoute
+  '/branch-ops': typeof BranchOpsRoute
+  '/customers': typeof CustomersRouteWithChildren
   '/dashboard': typeof DashboardRoute
-  '/import': typeof ImportRoute
+  '/dms': typeof DmsRoute
+  '/group-health': typeof GroupHealthRoute
   '/installments': typeof InstallmentsRoute
+  '/loyalty': typeof LoyaltyRoute
   '/notifications': typeof NotificationsRoute
+  '/omid-pension': typeof OmidPensionRoute
   '/pipeline': typeof PipelineRoute
   '/policies': typeof PoliciesRoute
+  '/premium-calc': typeof PremiumCalcRoute
+  '/renewals': typeof RenewalsRoute
   '/reports': typeof ReportsRoute
+  '/sales-network': typeof SalesNetworkRoute
+  '/sanhab': typeof SanhabRoute
   '/settings': typeof SettingsRoute
+  '/sima-zar': typeof SimaZarRoute
+  '/sms-panel': typeof SmsPanelRoute
   '/tasks': typeof TasksRoute
+  '/urgent-tasks': typeof UrgentTasksRoute
   '/users': typeof UsersRoute
-  '/customers/$id': typeof CustomersIdRoute
-  '/customers': typeof CustomersIndexRoute
+  '/customers/$customerId': typeof CustomersCustomerIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/audit': typeof AuditRoute
+  '/bimebazar': typeof BimebazarRoute
+  '/branch-ops': typeof BranchOpsRoute
+  '/customers': typeof CustomersRouteWithChildren
   '/dashboard': typeof DashboardRoute
-  '/import': typeof ImportRoute
+  '/dms': typeof DmsRoute
+  '/group-health': typeof GroupHealthRoute
   '/installments': typeof InstallmentsRoute
+  '/loyalty': typeof LoyaltyRoute
   '/notifications': typeof NotificationsRoute
+  '/omid-pension': typeof OmidPensionRoute
   '/pipeline': typeof PipelineRoute
   '/policies': typeof PoliciesRoute
+  '/premium-calc': typeof PremiumCalcRoute
+  '/renewals': typeof RenewalsRoute
   '/reports': typeof ReportsRoute
+  '/sales-network': typeof SalesNetworkRoute
+  '/sanhab': typeof SanhabRoute
   '/settings': typeof SettingsRoute
+  '/sima-zar': typeof SimaZarRoute
+  '/sms-panel': typeof SmsPanelRoute
   '/tasks': typeof TasksRoute
+  '/urgent-tasks': typeof UrgentTasksRoute
   '/users': typeof UsersRoute
-  '/customers/$id': typeof CustomersIdRoute
-  '/customers/': typeof CustomersIndexRoute
+  '/customers/$customerId': typeof CustomersCustomerIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/audit'
+    | '/bimebazar'
+    | '/branch-ops'
+    | '/customers'
     | '/dashboard'
-    | '/import'
+    | '/dms'
+    | '/group-health'
     | '/installments'
+    | '/loyalty'
     | '/notifications'
+    | '/omid-pension'
     | '/pipeline'
     | '/policies'
+    | '/premium-calc'
+    | '/renewals'
     | '/reports'
+    | '/sales-network'
+    | '/sanhab'
     | '/settings'
+    | '/sima-zar'
+    | '/sms-panel'
     | '/tasks'
+    | '/urgent-tasks'
     | '/users'
-    | '/customers/$id'
-    | '/customers/'
+    | '/customers/$customerId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/audit'
+    | '/bimebazar'
+    | '/branch-ops'
+    | '/customers'
     | '/dashboard'
-    | '/import'
+    | '/dms'
+    | '/group-health'
     | '/installments'
+    | '/loyalty'
     | '/notifications'
+    | '/omid-pension'
     | '/pipeline'
     | '/policies'
+    | '/premium-calc'
+    | '/renewals'
     | '/reports'
+    | '/sales-network'
+    | '/sanhab'
     | '/settings'
+    | '/sima-zar'
+    | '/sms-panel'
     | '/tasks'
+    | '/urgent-tasks'
     | '/users'
-    | '/customers/$id'
-    | '/customers'
+    | '/customers/$customerId'
   id:
     | '__root__'
     | '/'
     | '/audit'
+    | '/bimebazar'
+    | '/branch-ops'
+    | '/customers'
     | '/dashboard'
-    | '/import'
+    | '/dms'
+    | '/group-health'
     | '/installments'
+    | '/loyalty'
     | '/notifications'
+    | '/omid-pension'
     | '/pipeline'
     | '/policies'
+    | '/premium-calc'
+    | '/renewals'
     | '/reports'
+    | '/sales-network'
+    | '/sanhab'
     | '/settings'
+    | '/sima-zar'
+    | '/sms-panel'
     | '/tasks'
+    | '/urgent-tasks'
     | '/users'
-    | '/customers/$id'
-    | '/customers/'
+    | '/customers/$customerId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AuditRoute: typeof AuditRoute
+  BimebazarRoute: typeof BimebazarRoute
+  BranchOpsRoute: typeof BranchOpsRoute
+  CustomersRoute: typeof CustomersRouteWithChildren
   DashboardRoute: typeof DashboardRoute
-  ImportRoute: typeof ImportRoute
+  DmsRoute: typeof DmsRoute
+  GroupHealthRoute: typeof GroupHealthRoute
   InstallmentsRoute: typeof InstallmentsRoute
+  LoyaltyRoute: typeof LoyaltyRoute
   NotificationsRoute: typeof NotificationsRoute
+  OmidPensionRoute: typeof OmidPensionRoute
   PipelineRoute: typeof PipelineRoute
   PoliciesRoute: typeof PoliciesRoute
+  PremiumCalcRoute: typeof PremiumCalcRoute
+  RenewalsRoute: typeof RenewalsRoute
   ReportsRoute: typeof ReportsRoute
+  SalesNetworkRoute: typeof SalesNetworkRoute
+  SanhabRoute: typeof SanhabRoute
   SettingsRoute: typeof SettingsRoute
+  SimaZarRoute: typeof SimaZarRoute
+  SmsPanelRoute: typeof SmsPanelRoute
   TasksRoute: typeof TasksRoute
+  UrgentTasksRoute: typeof UrgentTasksRoute
   UsersRoute: typeof UsersRoute
-  CustomersIdRoute: typeof CustomersIdRoute
-  CustomersIndexRoute: typeof CustomersIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -221,11 +376,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UsersRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/urgent-tasks': {
+      id: '/urgent-tasks'
+      path: '/urgent-tasks'
+      fullPath: '/urgent-tasks'
+      preLoaderRoute: typeof UrgentTasksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/tasks': {
       id: '/tasks'
       path: '/tasks'
       fullPath: '/tasks'
       preLoaderRoute: typeof TasksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sms-panel': {
+      id: '/sms-panel'
+      path: '/sms-panel'
+      fullPath: '/sms-panel'
+      preLoaderRoute: typeof SmsPanelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sima-zar': {
+      id: '/sima-zar'
+      path: '/sima-zar'
+      fullPath: '/sima-zar'
+      preLoaderRoute: typeof SimaZarRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/settings': {
@@ -235,11 +411,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SettingsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sanhab': {
+      id: '/sanhab'
+      path: '/sanhab'
+      fullPath: '/sanhab'
+      preLoaderRoute: typeof SanhabRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sales-network': {
+      id: '/sales-network'
+      path: '/sales-network'
+      fullPath: '/sales-network'
+      preLoaderRoute: typeof SalesNetworkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/reports': {
       id: '/reports'
       path: '/reports'
       fullPath: '/reports'
       preLoaderRoute: typeof ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/renewals': {
+      id: '/renewals'
+      path: '/renewals'
+      fullPath: '/renewals'
+      preLoaderRoute: typeof RenewalsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/premium-calc': {
+      id: '/premium-calc'
+      path: '/premium-calc'
+      fullPath: '/premium-calc'
+      preLoaderRoute: typeof PremiumCalcRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/policies': {
@@ -256,11 +460,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PipelineRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/omid-pension': {
+      id: '/omid-pension'
+      path: '/omid-pension'
+      fullPath: '/omid-pension'
+      preLoaderRoute: typeof OmidPensionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/notifications': {
       id: '/notifications'
       path: '/notifications'
       fullPath: '/notifications'
       preLoaderRoute: typeof NotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/loyalty': {
+      id: '/loyalty'
+      path: '/loyalty'
+      fullPath: '/loyalty'
+      preLoaderRoute: typeof LoyaltyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/installments': {
@@ -270,11 +488,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InstallmentsRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/import': {
-      id: '/import'
-      path: '/import'
-      fullPath: '/import'
-      preLoaderRoute: typeof ImportRouteImport
+    '/group-health': {
+      id: '/group-health'
+      path: '/group-health'
+      fullPath: '/group-health'
+      preLoaderRoute: typeof GroupHealthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dms': {
+      id: '/dms'
+      path: '/dms'
+      fullPath: '/dms'
+      preLoaderRoute: typeof DmsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dashboard': {
@@ -282,6 +507,27 @@ declare module '@tanstack/react-router' {
       path: '/dashboard'
       fullPath: '/dashboard'
       preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/customers': {
+      id: '/customers'
+      path: '/customers'
+      fullPath: '/customers'
+      preLoaderRoute: typeof CustomersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/branch-ops': {
+      id: '/branch-ops'
+      path: '/branch-ops'
+      fullPath: '/branch-ops'
+      preLoaderRoute: typeof BranchOpsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bimebazar': {
+      id: '/bimebazar'
+      path: '/bimebazar'
+      fullPath: '/bimebazar'
+      preLoaderRoute: typeof BimebazarRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/audit': {
@@ -298,38 +544,54 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/customers/': {
-      id: '/customers/'
-      path: '/customers'
-      fullPath: '/customers/'
-      preLoaderRoute: typeof CustomersIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/customers/$id': {
-      id: '/customers/$id'
-      path: '/customers/$id'
-      fullPath: '/customers/$id'
-      preLoaderRoute: typeof CustomersIdRouteImport
-      parentRoute: typeof rootRouteImport
+    '/customers/$customerId': {
+      id: '/customers/$customerId'
+      path: '/$customerId'
+      fullPath: '/customers/$customerId'
+      preLoaderRoute: typeof CustomersCustomerIdRouteImport
+      parentRoute: typeof CustomersRoute
     }
   }
 }
 
+interface CustomersRouteChildren {
+  CustomersCustomerIdRoute: typeof CustomersCustomerIdRoute
+}
+
+const CustomersRouteChildren: CustomersRouteChildren = {
+  CustomersCustomerIdRoute: CustomersCustomerIdRoute,
+}
+
+const CustomersRouteWithChildren = CustomersRoute._addFileChildren(
+  CustomersRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuditRoute: AuditRoute,
+  BimebazarRoute: BimebazarRoute,
+  BranchOpsRoute: BranchOpsRoute,
+  CustomersRoute: CustomersRouteWithChildren,
   DashboardRoute: DashboardRoute,
-  ImportRoute: ImportRoute,
+  DmsRoute: DmsRoute,
+  GroupHealthRoute: GroupHealthRoute,
   InstallmentsRoute: InstallmentsRoute,
+  LoyaltyRoute: LoyaltyRoute,
   NotificationsRoute: NotificationsRoute,
+  OmidPensionRoute: OmidPensionRoute,
   PipelineRoute: PipelineRoute,
   PoliciesRoute: PoliciesRoute,
+  PremiumCalcRoute: PremiumCalcRoute,
+  RenewalsRoute: RenewalsRoute,
   ReportsRoute: ReportsRoute,
+  SalesNetworkRoute: SalesNetworkRoute,
+  SanhabRoute: SanhabRoute,
   SettingsRoute: SettingsRoute,
+  SimaZarRoute: SimaZarRoute,
+  SmsPanelRoute: SmsPanelRoute,
   TasksRoute: TasksRoute,
+  UrgentTasksRoute: UrgentTasksRoute,
   UsersRoute: UsersRoute,
-  CustomersIdRoute: CustomersIdRoute,
-  CustomersIndexRoute: CustomersIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
