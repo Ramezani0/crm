@@ -1,44 +1,43 @@
-# CRM فصیحی (Fasihi CRM)
+# CRM فصیحی — سامانه مدیریت مشتریان بیمه
 
-سامانه فارسی RTL مدیریت بیمه‌گذار، بیمه‌نامه و اقساط.
+> **اسنپ‌شات کد از کپی محلی:** محتوای برنچ `backup/crm-full-snapshot-2026-11-14` از کپی محلی تهیه شده و برابری آن با نسخه مستقر روی سرور تأیید نشده است. برای منشأ، محدودیت‌ها و فایل‌های کنارگذاشته‌شده، [گزارش اسنپ‌شات](docs/LOCAL_SNAPSHOT_PROVENANCE_FA.md) را بخوانید. از این برنچ برای استقرار یا اجرای migration روی داده زنده استفاده نکنید.
 
-## وضعیت داده واقعی (VPS)
+سامانه فارسی و راست‌چین مدیریت مشتریان، بیمه‌نامه‌ها و اقساط برای **نمایندگی ۳۰۴۵ بیمه کارآفرین — خانم فاطمه فصیحی**.
 
-- دامنه: https://www.fasihicrm.ir  
-- API: `/api/health` → ۱۳۵۲ مشتری / ۳۴۹۹ بیمه‌نامه / ۳۱۱۲ قسط  
-- ورود دمو: `ceo` / `۱۲۳۴۵۶`
+فاز ۲: پوستهٔ ورود سه‌بعدی، شل داشبورد، و اتصال فروشگاه UI به `GET /api/data` با بازگشت به دادهٔ نمایشی اگر API در دسترس نباشد. دادهٔ زندهٔ Postgres روی VPS دست‌نخورده می‌ماند.
 
-## توسعه محلی
+برندینگ: [AGENCY.md](./AGENCY.md) · معماری: [docs/ARCHITECTURE.md](./docs/ARCHITECTURE.md) · چشم‌انداز: [VISION-V2.md](./VISION-V2.md)
 
-```bash
+## امکانات فاز ۱
+
+- ورود با صحنهٔ سه‌بعدی (سپر / چتر / رشد) — فقط لاگین و هیروی داشبورد؛ `prefers-reduced-motion` به SVG ثابت برمی‌گردد
+- شل داشبورد و ناوبری: مشتریان، بیمه‌نامه‌ها، اقساط، تمدید، پایپلاین، گزارش‌ها، کاربران
+- صفحات ماژول: مشتریان / بیمه‌نامه‌ها / اقساط از `/api/data` (اگر API قطع باشد، همان دادهٔ نمایشی فاز ۱)
+- هلپر کلاینت برای `GET /api/health` و `GET /api/data` — شکست شبکه یا پاسخ خطا → mock، بدون کرش
+- ثبت مشتری، پرداخت قسط، ورود CSV و تبدیل پایپلاین هنوز فقط در حافظهٔ مرورگر است (API نوشتنی ندارد)
+- نقش‌ها: مدیرعامل، مدیر داخلی، کارشناس فروش، حسابداری
+
+## حساب‌های نمونه
+
+نام کاربری: `ceo` / `manager` / `sales` / `accounting`
+
+رمز عبور از `VITE_DEMO_PASSWORD` خوانده می‌شود. اگر تنظیم نشده باشد، هر رمز غیرخالی برای این نام‌های کاربری پذیرفته می‌شود. **رمز را در گیت نگذارید.**
+
+## اجرای محلی
+
+```
 bun install
+cp .env.example .env
 bun run dev
 ```
 
-UI از `/api/data` (همان‌origin) می‌خواند. برای توسعه محلی، API را پروکسی کنید یا از دموی داخلی به‌عنوان fallback استفاده می‌شود.
+## استقرار
 
-## استقرار روی VPS (۱GB RAM)
+`vps/app.py` از کپی محلی آمده است؛ تطابق آن با API زندهٔ VPS هنوز تأیید نشده است. دیتابیس را پاک یا دوباره وارد نکنید.
 
-بیلد را روی ماشین قوی انجام دهید؛ روی VPS فقط image را load کنید.
+پیامک ایران‌پیامک روی سرور است. کلیدها را فقط در `.env` وی‌پی‌اس بگذارید (بدون مقدار در گیت): `IRANPAYAMAK_USERNAME`, `IRANPAYAMAK_PASSWORD`, `IRANPAYAMAK_LINE` / `IRANPAYAMAK_LINE_NUMBER` / `LINE_NUMBER`, `IRANPAYAMAK_API_KEY`.
 
-```bash
-# روی ماشین بیلد:
-NITRO_PRESET=bun bun run build
-docker build -f Dockerfile.runtime -t fasihi-crm:local .
-docker save fasihi-crm:local | gzip > fasihi-crm-local.tar.gz
-
-# روی VPS:
-gunzip -c fasihi-crm-local.tar.gz | docker load
-docker compose -f deploy/docker-compose.app.yml up -d
-# Caddy: deploy/Caddyfile → پروکسی / به :3000 و /api و /data به API
 ```
-
-جزئیات بیشتر: [deploy/README.md](deploy/README.md)
-
-## نکات مهم
-
-- `kind` خام می‌ماند (سواری ≠ عمر).
-- `holderName` و `statusLabel` فارسی از فایل/دیتابیس نمایش داده می‌شوند.
-- سلول خالی → `—`
-- صفر اول شناسه/موبایل حدس زده یا pad نمی‌شود.
-- رمز VPS/DB را در گیت نگذارید.
+cp .env.example .env
+docker compose up -d --build
+```
