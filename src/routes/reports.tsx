@@ -60,7 +60,7 @@ function ReportsPage() {
       }
     >
       <SectionCard title="عملکرد کارشناسان فروش">
-        <table className="w-full text-sm">
+        <table className="w-full text-base">
           <thead>
             <tr className="border-b border-border text-xs text-muted-foreground">
               <th className="p-2 text-start">کارشناس</th>

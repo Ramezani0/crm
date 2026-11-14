@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import { AlertTriangle, Inbox, Lock, WifiOff } from "lucide-react";
+import { Button } from "./ui/button";
 import { Skeleton } from "./ui/skeleton";
 
 export function TableSkeleton({ rows = 8, cols = 6 }: { rows?: number; cols?: number }) {
@@ -41,9 +42,9 @@ export function ErrorState({ message, onRetry }: { message: string; onRetry?: ()
       <AlertTriangle className="size-7 text-destructive" aria-hidden />
       <p className="text-sm">{message}</p>
       {onRetry && (
-        <button onClick={onRetry} className="rounded-md bg-primary px-3 py-1.5 text-sm text-primary-foreground">
+        <Button type="button" size="sm" onClick={onRetry}>
           تلاش دوباره
-        </button>
+        </Button>
       )}
     </div>
   );
@@ -66,6 +67,38 @@ export function OfflineBanner() {
     <div className="flex items-center gap-2 rounded-lg border border-warning/40 bg-warning/10 px-3 py-2 text-sm">
       <WifiOff className="size-4 text-warning" aria-hidden />
       اتصال اینترنت برقرار نیست؛ تغییرات به‌صورت محلی نگهداری می‌شود.
+    </div>
+  );
+}
+
+export function ApiErrorBanner({
+  message,
+  onRetry,
+}: {
+  message?: string | null;
+  onRetry?: () => void;
+}) {
+  return (
+    <div className="flex flex-wrap items-center gap-2 rounded-lg border border-destructive/40 bg-destructive/10 px-3 py-2 text-sm">
+      <AlertTriangle className="size-4 shrink-0 text-destructive" aria-hidden />
+      <span className="min-w-0 flex-1">
+        {message || "خواندن /api/data ناموفق بود. دوباره تلاش کنید."}
+      </span>
+      {onRetry && (
+        <Button type="button" size="sm" onClick={onRetry}>
+          تلاش دوباره
+        </Button>
+      )}
+    </div>
+  );
+}
+
+export function MockDataBanner() {
+  return (
+    <div className="flex items-center gap-2 rounded-lg border border-info/40 bg-info/10 px-3 py-2 text-sm">
+      <Inbox className="size-4 text-info" aria-hidden />
+      /api/data در دسترس نیست — فهرست مشتریان، بیمه‌نامه‌ها و اقساط از دادهٔ نمایشی است. دیتابیس
+      زنده دست نخورده می‌ماند.
     </div>
   );
 }

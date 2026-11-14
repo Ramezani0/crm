@@ -23,7 +23,8 @@ export type Permission =
   | "notifications.view"
   | "users.manage"
   | "settings.manage"
-  | "audit.view";
+  | "audit.view"
+  | "tools.view";
 
 export const ROLE_PERMISSIONS: Record<RoleId, Permission[]> = {
   ceo: [
@@ -43,6 +44,7 @@ export const ROLE_PERMISSIONS: Record<RoleId, Permission[]> = {
     "users.manage",
     "settings.manage",
     "audit.view",
+    "tools.view",
   ],
   internal_manager: [
     "dashboard.view",
@@ -60,6 +62,7 @@ export const ROLE_PERMISSIONS: Record<RoleId, Permission[]> = {
     "users.manage",
     "settings.manage",
     "audit.view",
+    "tools.view",
   ],
   sales: [
     "dashboard.view",
@@ -73,6 +76,7 @@ export const ROLE_PERMISSIONS: Record<RoleId, Permission[]> = {
     "reports.view",
     "tasks.view",
     "notifications.view",
+    "tools.view",
   ],
   accounting: [
     "dashboard.view",
@@ -86,6 +90,7 @@ export const ROLE_PERMISSIONS: Record<RoleId, Permission[]> = {
     "tasks.view",
     "notifications.view",
     "audit.view",
+    "tools.view",
   ],
 };
 
@@ -95,53 +100,94 @@ export interface Customer {
   id: string;
   fullName: string;
   nationalId: string;
+  /** 11-digit legal entity ID (شناسه حقوقی). Empty when the source column is null. */
+  legalEntityId: string;
+  /** Optional from slim `/api/customers` (`holder_code` on the wire). */
+  holderCode?: string;
   phone: string;
   email: string;
   city: string;
   status: CustomerStatus;
-  /** Persian status from source file when available. */
+  /** Original Excel/DB status text — never drop Persian labels. */
   statusLabel?: string;
   segment: "حقیقی" | "حقوقی";
   agent: string;
   createdAt: string;
   note?: string;
+  address?: string;
+  fatherName?: string;
+  birthDate?: string;
+  postalCode?: string;
+  extras?: Record<string, string>;
 }
 
-/** Raw policy kind from source file/DB (e.g. سواری، بارکش) — not remapped. */
-export type PolicyKind = string;
+export type PolicyKind =
+  | "شخص ثالث"
+  | "بدنه"
+  | "عمر و سرمایه‌گذاری"
+  | "درمان تکمیلی"
+  | "آتش‌سوزی"
+  | "مسئولیت";
 export type PolicyStatus = "active" | "expired" | "pending" | "cancelled";
 
 export interface Policy {
   id: string;
   number: string;
   customerId: string;
-  /** Insured / policy holder name from import file when customerId is missing. */
-  holderName?: string;
-  kind: PolicyKind;
+  /** Live `/api/data` may emit kinds outside the demo enum; UI displays the string as-is. */
+  kind: PolicyKind | string;
+  kindRaw?: string;
   company: string;
   premium: number;
+  /**
+   * آخرین الحاقیه / آخرین IP ذخیره‌شده در policies.initial_premium.
+   * نمایش جدا؛ برای نردبان خودکار استفاده نشود.
+   */
+  initialPremium?: number;
+  /**
+   * حق بیمه اولیه سال شروع (Excel نسخه بیمه‌نامه جدید).
+   * DB: initial_premium_start · API: initialPremiumStart · P0 نردبان.
+   */
+  initialPremiumStart?: number;
+  /** درصد ضریب تعدیل حق بیمه اکسل (مثلاً ۱۰ → r=0.10) */
+  premiumAdjPct?: number;
   startDate: string;
   endDate: string;
+  issueDate?: string;
   status: PolicyStatus;
-  /** Persian status text from source file (preferred for display). */
   statusLabel?: string;
   installmentCount: number;
+  computerCode?: string;
+  holderNationalId?: string;
+  holderName?: string;
+  holderCode?: string;
+  extras?: Record<string, string>;
 }
 
-export type InstallmentStatus = "paid" | "due" | "overdue" | "partial";
+export type InstallmentStatus = "paid" | "due" | "overdue" | "partial" | "history";
 
 export interface Installment {
   id: string;
   policyId: string;
   customerId: string;
-  holderName?: string;
   seq: number;
   amount: number;
   paidAmount: number;
+  /** Arrears from import (مبلغ بدهی / وصول نشده). When set, debt uses this over amount−paid. */
+  unpaidAmount?: number | null;
   dueDate: string;
   status: InstallmentStatus;
   statusLabel?: string;
+  /** Import kind e.g. unpaid_due, HIST:universal_life — HIST never open debt. */
+  kind?: string;
+  computerCode?: string;
+  holderCode?: string;
+  payerNationalId?: string;
+  insuredNationalId?: string;
+  paymentMethod?: string;
+  paidDate?: string;
   payments: { id: string; amount: number; date: string; method: string; by: string }[];
+  extras?: Record<string, string>;
 }
 
 export interface Task {

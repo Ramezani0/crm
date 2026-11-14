@@ -116,15 +116,17 @@ export function buildDemoData(): DemoData {
 
   const customers: Customer[] = Array.from({ length: 420 }, (_, i) => {
     const name = `${pick(FIRST)} ${pick(LAST)}`;
+    const segment = rnd() > 0.78 ? "حقوقی" : "حقیقی";
     return {
       id: `C-${1000 + i}`,
       fullName: name,
       nationalId: String(Math.floor(1000000000 + rnd() * 8999999999)),
+      legalEntityId: segment === "حقوقی" ? `10${String(1000 + i).padStart(9, "0")}` : "",
       phone: `09${Math.floor(120000000 + rnd() * 79999999)}`,
       email: `user${1000 + i}@fasihi.ir`,
       city: pick(CITIES),
       status: rnd() > 0.82 ? "lead" : rnd() > 0.15 ? "active" : "inactive",
-      segment: rnd() > 0.78 ? "حقوقی" : "حقیقی",
+      segment,
       agent: pick(AGENTS),
       createdAt: iso(-Math.floor(rnd() * 700)),
       note: rnd() > 0.7 ? "مشتری وفادار، تمدید سالانه انجام می‌شود." : undefined,
@@ -236,7 +238,7 @@ export function buildDemoData(): DemoData {
   }));
 
   const users: AppUser[] = [
-    { id: "U-1", name: "مهدی فصیحی", username: "ceo", role: "ceo", email: "ceo@fasihi.ir", active: true, lastLogin: iso(-1) },
+    { id: "U-1", name: "فاطمه فصیحی", username: "ceo", role: "ceo", email: "ceo@fasihi.ir", active: true, lastLogin: iso(-1) },
     {
       id: "U-2",
       name: "نگار موسوی",
