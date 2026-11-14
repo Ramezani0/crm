@@ -1,0 +1,49 @@
+# Edge snippet for fasihicrm.ir. LIVE file is /opt/fasihi/Caddyfile and may
+# already send web to fasihi-web (Docker). Do NOT overwrite live web upstream
+# with the Lovable handle below — MERGE only the /api/* and /data* 5m timeout
+# blocks (and servers.timeouts) into the live Caddyfile, then reload.
+{
+	servers {
+		timeouts {
+			read_body 5m
+			read_header 1m
+			write 5m
+			idle 10m
+		}
+	}
+}
+
+fasihicrm.ir, www.fasihicrm.ir {
+	handle /api/* {
+		reverse_proxy fasihi-api:8088 {
+			flush_interval 100ms
+			transport http {
+				dial_timeout 10s
+				response_header_timeout 2m
+				read_timeout 5m
+				write_timeout 5m
+			}
+		}
+	}
+
+	handle /data* {
+		reverse_proxy fasihi-api:8088 {
+			flush_interval 100ms
+			transport http {
+				dial_timeout 10s
+				read_timeout 5m
+				write_timeout 5m
+			}
+		}
+	}
+
+	handle {
+		encode gzip
+		reverse_proxy https://fasihi-crm.lovable.app {
+			header_up Host fasihi-crm.lovable.app
+			header_up X-Forwarded-Host {host}
+			header_up X-Forwarded-Proto {scheme}
+			header_up X-Real-IP {remote_host}
+		}
+	}
+}
